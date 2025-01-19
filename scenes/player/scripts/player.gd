@@ -6,8 +6,8 @@ extends Area2D
 const LINEAR_SPEED: int = 400
 const OFFSET_ROTATION: float = PI / 2
 
-const WALK_ANIMATION: String = "walk"
-const UP_ANIMATION: String = "up"
+const WALK_ANIMATION: String = "WALK"
+const UP_ANIMATION: String = "UP"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
