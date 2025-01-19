@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://ecbnai53is5y"]
+
+[ext_resource type="Texture2D" uid="uid://cju2qwkfw37j0" path="res://scenes/enemies/mob/assets/enemy_flying_1.png" id="1_56mih"]
+[ext_resource type="Texture2D" uid="uid://ds8g3ltbcq642" path="res://scenes/enemies/mob/assets/enemy_swimming_1.png" id="1_ig1ov"]
+[ext_resource type="Script" path="res://scenes/enemies/mob/scripts/mob.gd" id="1_xfh80"]
+[ext_resource type="Texture2D" uid="uid://bc3wwm7uliefy" path="res://scenes/enemies/mob/assets/enemy_flying_2.png" id="2_bm4gm"]
+[ext_resource type="Texture2D" uid="uid://b4hpl5rhlpw3g" path="res://scenes/enemies/mob/assets/enemy_swimming_2.png" id="2_pnyls"]
+[ext_resource type="Texture2D" uid="uid://bnlr03suxro66" path="res://scenes/enemies/mob/assets/enemy_walking_1.png" id="3_lli34"]
+[ext_resource type="Texture2D" uid="uid://eek8odt380mb" path="res://scenes/enemies/mob/assets/enemy_walking_2.png" id="4_j4oaf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u0j4j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_56mih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_bm4gm")
+}],
+"loop": true,
+"name": &"FLYING",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ig1ov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_pnyls")
+}],
+"loop": true,
+"name": &"SWIMMING",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lli34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_j4oaf")
+}],
+"loop": true,
+"name": &"WALKING",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xqhcm"]
+radius = 24.0
+height = 66.0
+
+[node name="MobArea" type="Area2D"]
+script = ExtResource("1_xfh80")
+
+[node name="MobAnimatedSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_u0j4j")
+animation = &"WALKING"
+
+[node name="MobCollisionShape" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xqhcm")
