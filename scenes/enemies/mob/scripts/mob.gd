@@ -6,7 +6,6 @@ extends Area2D
 const MIN_LINEAR_SPEED: int = 250
 const MAX_LINEAR_SPEED: int = 450
 
-var direction: Vector2 = Vector2.RIGHT
 var linear_speed: int = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -29,4 +28,4 @@ func set_random_speed() -> void:
 	self.linear_speed = randi_range(MIN_LINEAR_SPEED, MAX_LINEAR_SPEED)
 
 func move_mob(delta: float) -> void:
-	self.position += self.direction * self.linear_speed * delta
+	self.position += Vector2.RIGHT.rotated(self.rotation) * self.linear_speed * delta
