@@ -55,7 +55,7 @@ script = ExtResource("1_xfh80")
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_u0j4j")
 animation = &"WALKING"
-frame_progress = 0.944921
+frame_progress = 0.295946
 
 [node name="MobCollisionShape" type="CollisionShape2D" parent="."]
 rotation = 1.5708

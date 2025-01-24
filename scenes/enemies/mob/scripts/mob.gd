@@ -4,8 +4,8 @@ extends Area2D
 @onready var collision_shape: CollisionShape2D = $MobCollisionShape
 @onready var visible_screen_notifier: VisibleOnScreenNotifier2D = $MobVisibleOnScreenNotifier
 
-const MIN_LINEAR_SPEED: int = 250
-const MAX_LINEAR_SPEED: int = 450
+const MIN_LINEAR_SPEED: int = 150
+const MAX_LINEAR_SPEED: int = 250
 
 var linear_speed: int = 0
 
