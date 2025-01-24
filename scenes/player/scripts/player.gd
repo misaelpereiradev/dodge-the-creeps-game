@@ -1,7 +1,7 @@
 extends Area2D
 
-@onready var sprite: AnimatedSprite2D = $PlayerAnimatedSprite
-@onready var shape: CollisionShape2D = $PlayerCollisionShape
+@onready var animated_sprite: AnimatedSprite2D = $PlayerAnimatedSprite
+@onready var collision_shape: CollisionShape2D = $PlayerCollisionShape
 
 const LINEAR_SPEED: int = 400
 const OFFSET_ROTATION: float = PI / 2
@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 
 func set_player_boundaries() -> void:
 	var screen_size: Vector2 = get_viewport_rect().size
-	var shape_size: Vector2 = self.shape.shape.get_rect().size
+	var shape_size: Vector2 = self.collision_shape.shape.get_rect().size
 	self.min_position = Vector2.ZERO + shape_size / 2
 	self.max_position = screen_size - shape_size / 2
 
@@ -39,17 +39,17 @@ func check_player_movement(delta: float) -> void:
 		direction += Vector2.UP
 		
 	if direction == Vector2.ZERO:
-		self.sprite.pause()
+		self.animated_sprite.pause()
 		return
 	
 	if direction.y == 0:
 		self.rotation = 0
-		self.sprite.flip_h = direction.angle() != 0
-		self.sprite.play(WALK_ANIMATION)
+		self.animated_sprite.flip_h = direction.angle() != 0
+		self.animated_sprite.play(WALK_ANIMATION)
 	else:
-		self.sprite.flip_h = false
+		self.animated_sprite.flip_h = false
 		self.rotation = direction.angle() + OFFSET_ROTATION
-		self.sprite.play(UP_ANIMATION)
+		self.animated_sprite.play(UP_ANIMATION)
 		
 	self.position += direction.normalized() * LINEAR_SPEED * delta
 	self.position = self.position.clamp(self.min_position, self.max_position)

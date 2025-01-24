@@ -1,4 +1,4 @@
-class_name World extends Node
+extends Node
 
 @export var enemy: PackedScene
 

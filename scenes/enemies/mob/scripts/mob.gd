@@ -1,7 +1,7 @@
 extends Area2D
 
-@onready var sprite: AnimatedSprite2D = $MobAnimatedSprite
-@onready var shape: CollisionShape2D = $MobCollisionShape
+@onready var animated_sprite: AnimatedSprite2D = $MobAnimatedSprite
+@onready var collision_shape: CollisionShape2D = $MobCollisionShape
 
 const MIN_LINEAR_SPEED: int = 250
 const MAX_LINEAR_SPEED: int = 450
@@ -19,9 +19,9 @@ func _process(delta: float) -> void:
 
 func set_random_animation() -> void:
 	randomize()
-	var animations: PackedStringArray = self.sprite.sprite_frames.get_animation_names()
+	var animations: PackedStringArray = self.animated_sprite.sprite_frames.get_animation_names()
 	var random_index: int = randi_range(0, animations.size() - 1)
-	self.sprite.play(animations[random_index])
+	self.animated_sprite.play(animations[random_index])
 
 func set_random_speed() -> void:
 	randomize()
