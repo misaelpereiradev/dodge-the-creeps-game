@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var animated_sprite: AnimatedSprite2D = $MobAnimatedSprite
 @onready var collision_shape: CollisionShape2D = $MobCollisionShape
+@onready var visible_screen_notifier: VisibleOnScreenNotifier2D = $MobVisibleOnScreenNotifier
 
 const MIN_LINEAR_SPEED: int = 250
 const MAX_LINEAR_SPEED: int = 450
@@ -29,3 +30,8 @@ func set_random_speed() -> void:
 
 func move_mob(delta: float) -> void:
 	self.position += Vector2.RIGHT.rotated(self.rotation) * self.linear_speed * delta
+
+
+func _on_mob_visible_on_screen_notifier_screen_exited() -> void:
+	self.queue_free()
+	print("out of screen")
