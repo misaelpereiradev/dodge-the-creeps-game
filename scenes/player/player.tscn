@@ -45,3 +45,5 @@ animation = &"WALK"
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_5xrwe")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

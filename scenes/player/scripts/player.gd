@@ -3,6 +3,8 @@ extends Area2D
 @onready var animated_sprite: AnimatedSprite2D = $PlayerAnimatedSprite
 @onready var collision_shape: CollisionShape2D = $PlayerCollisionShape
 
+signal hit
+
 const LINEAR_SPEED: int = 400
 const OFFSET_ROTATION: float = PI / 2
 
@@ -53,3 +55,11 @@ func check_player_movement(delta: float) -> void:
 		
 	self.position += direction.normalized() * LINEAR_SPEED * delta
 	self.position = self.position.clamp(self.min_position, self.max_position)
+
+func _on_area_entered(area: Area2D) -> void:
+	hit_player()
+	
+func hit_player() -> void:
+	self.hide()
+	self.collision_shape.set_deferred("disable", true)
+	self.hit.emit()
