@@ -3,7 +3,7 @@ extends Node
 @export var enemy: PackedScene
 
 @onready var path_follower: PathFollow2D = $MobSpawnerPath/MobSpawnerPathFollow
-@onready var wait_timer: Timer = $MobSpawnerWaitTimer
+@onready var wait_timer: Timer = $MobSpawnerPath/MobSpawnerWaitTimer
 
 const MIN_ROTATION: float = PI/4
 const MAX_ROTATION: float = 3 * PI/4

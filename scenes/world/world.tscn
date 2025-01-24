@@ -21,8 +21,11 @@ position = Vector2(480, 82.0772)
 rotation = 1.5708
 progress = 562.08
 
-[node name="MobSpawnerWaitTimer" type="Timer" parent="."]
+[node name="MobSpawnerWaitTimer" type="Timer" parent="MobSpawnerPath"]
 wait_time = 0.5
 autostart = true
 
-[connection signal="timeout" from="MobSpawnerWaitTimer" to="." method="_on_mob_spawner_wait_timer_timeout"]
+[node name="PlayerSpawnMarker" type="Marker2D" parent="."]
+position = Vector2(240, 360)
+
+[connection signal="timeout" from="MobSpawnerPath/MobSpawnerWaitTimer" to="." method="_on_mob_spawner_wait_timer_timeout"]
