@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://ccj4vdgc0bu7b"]
+[gd_scene load_steps=4 format=3 uid="uid://ccj4vdgc0bu7b"]
+
+[ext_resource type="Script" path="res://scenes/main/scripts/main.gd" id="1_uwsew"]
+[ext_resource type="PackedScene" uid="uid://d137k83y422en" path="res://scenes/world/world.tscn" id="2_fd81m"]
+[ext_resource type="PackedScene" uid="uid://dq75csexcfkhb" path="res://scenes/player/player.tscn" id="3_mh7s2"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_uwsew")
+
+[node name="World" parent="." instance=ExtResource("2_fd81m")]
+
+[node name="PlayerArea" parent="." instance=ExtResource("3_mh7s2")]
+
+[connection signal="hit" from="PlayerArea" to="." method="_on_player_area_hit"]
