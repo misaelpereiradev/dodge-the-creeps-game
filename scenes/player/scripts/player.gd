@@ -9,13 +9,22 @@ const OFFSET_ROTATION: float = PI / 2
 const WALK_ANIMATION: String = "WALK"
 const UP_ANIMATION: String = "UP"
 
+var min_position: Vector2;
+var max_position: Vector2;
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	set_player_boundaries()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	check_player_movement(delta)
+
+func set_player_boundaries() -> void:
+	var screen_size: Vector2 = get_viewport_rect().size
+	var shape_size: Vector2 = self.shape.shape.get_rect().size
+	self.min_position = Vector2.ZERO + shape_size / 2
+	self.max_position = screen_size - shape_size / 2
 
 func check_player_movement(delta: float) -> void:
 	var direction: Vector2 = Vector2.ZERO
@@ -43,3 +52,4 @@ func check_player_movement(delta: float) -> void:
 		self.sprite.play(UP_ANIMATION)
 		
 	self.position += direction.normalized() * LINEAR_SPEED * delta
+	self.position = self.position.clamp(self.min_position, self.max_position)
