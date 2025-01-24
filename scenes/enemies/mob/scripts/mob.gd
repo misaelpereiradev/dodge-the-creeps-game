@@ -1,4 +1,4 @@
-extends Area2D
+class_name Mob extends Area2D
 
 @onready var animated_sprite: AnimatedSprite2D = $MobAnimatedSprite
 @onready var collision_shape: CollisionShape2D = $MobCollisionShape
@@ -31,7 +31,5 @@ func set_random_speed() -> void:
 func move_mob(delta: float) -> void:
 	self.position += Vector2.RIGHT.rotated(self.rotation) * self.linear_speed * delta
 
-
 func _on_mob_visible_on_screen_notifier_screen_exited() -> void:
 	self.queue_free()
-	print("out of screen")

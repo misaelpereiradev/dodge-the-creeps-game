@@ -1,4 +1,4 @@
-extends Area2D
+class_name Player extends Area2D
 
 @onready var animated_sprite: AnimatedSprite2D = $PlayerAnimatedSprite
 @onready var collision_shape: CollisionShape2D = $PlayerCollisionShape

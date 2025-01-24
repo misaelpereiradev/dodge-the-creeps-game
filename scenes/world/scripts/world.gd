@@ -1,9 +1,10 @@
-extends Node
+class_name World extends Node
 
 @export var enemy: PackedScene
 
 @onready var path_follower: PathFollow2D = $MobSpawnerPath/MobSpawnerPathFollow
 @onready var wait_timer: Timer = $MobSpawnerPath/MobSpawnerWaitTimer
+@onready var player_spawn: Marker2D = $PlayerSpawnMarker
 
 const MIN_ROTATION: float = PI/4
 const MAX_ROTATION: float = 3 * PI/4
@@ -30,7 +31,7 @@ func get_random_rotation() -> float:
 	return self.path_follower.rotation + rotation_variation
 
 func spawn_mob(position: Vector2, rotation: float) -> void:
-	var mob: Area2D = enemy.instantiate()
+	var mob: Mob = enemy.instantiate()
 	mob.position = position
 	mob.rotation = rotation
 	self.add_child(mob)
